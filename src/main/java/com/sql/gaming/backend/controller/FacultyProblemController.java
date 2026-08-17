@@ -28,17 +28,6 @@ public class FacultyProblemController {
 
 	private final ProblemService problemService;
 
-	// =========================================================
-	// CREATE PROBLEM
-	// =========================================================
-
-	/**
-	 * Create a new SQL problem.
-	 *
-	 * FACULTY / ADMIN only.
-	 *
-	 * Username is obtained from the authenticated JWT.
-	 */
 	@PostMapping("/createproblem")
 	public ResponseEntity<ApiResponse<ProblemResponse>> createProblem(
 
@@ -47,25 +36,14 @@ public class FacultyProblemController {
 			Authentication authentication) {
 
 		String userName = authentication.getName();
-		
-        log.info(userName);
+
+		log.info(userName);
 		ProblemResponse response = problemService.createProblem(request, userName);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.<ProblemResponse>builder().success(true)
 				.message("SQL problem created successfully.").data(response).build());
 	}
 
-	// =========================================================
-	// GET MY PROBLEMS
-	// =========================================================
-
-	/**
-	 * Get problems created by the logged-in Faculty.
-	 *
-	 * ADMIN can see all problems.
-	 *
-	 * FACULTY can see only their own problems.
-	 */
 	@GetMapping("/allproblems")
 	public ResponseEntity<ApiResponse<List<ProblemResponse>>> getMyProblems(Authentication authentication) {
 
@@ -77,17 +55,6 @@ public class FacultyProblemController {
 				.message("Problems fetched successfully.").data(problems).build());
 	}
 
-	// =========================================================
-	// GET PROBLEM BY ID
-	// =========================================================
-
-	/**
-	 * Get a single problem.
-	 *
-	 * FACULTY: Can access only their own problem.
-	 *
-	 * ADMIN: Can access any problem.
-	 */
 	@GetMapping("/{problemId}")
 	public ResponseEntity<ApiResponse<ProblemResponse>> getProblemById(
 
@@ -103,17 +70,6 @@ public class FacultyProblemController {
 				.message("Problem fetched successfully.").data(response).build());
 	}
 
-	// =========================================================
-	// UPDATE PROBLEM
-	// =========================================================
-
-	/**
-	 * Update an existing SQL problem.
-	 *
-	 * FACULTY: Can update only their own problem.
-	 *
-	 * ADMIN: Can update any problem.
-	 */
 	@PutMapping("/{problemId}")
 	public ResponseEntity<ApiResponse<ProblemResponse>> updateProblem(
 
@@ -131,15 +87,6 @@ public class FacultyProblemController {
 				.message("Problem updated successfully.").data(response).build());
 	}
 
-	// =========================================================
-	// DEACTIVATE PROBLEM
-	// =========================================================
-
-	/**
-	 * Deactivate a problem.
-	 *
-	 * The problem remains in the database, but students should no longer see it.
-	 */
 	@PatchMapping("/{problemId}/toggleactivate")
 	public ResponseEntity<ApiResponse<ProblemResponse>> deactivateProblem(
 
@@ -155,17 +102,6 @@ public class FacultyProblemController {
 				.message("Problem deactivated successfully.").data(response).build());
 	}
 
-	// =========================================================
-	// DELETE PROBLEM
-	// =========================================================
-
-	/**
-	 * Permanently delete a problem.
-	 *
-	 * NOTE: At the service level both Faculty and Admin currently have access.
-	 *
-	 * Later, we can restrict permanent deletion to ADMIN only.
-	 */
 	@DeleteMapping("/{problemId}")
 	public ResponseEntity<ApiResponse<Long>> deleteProblem(
 

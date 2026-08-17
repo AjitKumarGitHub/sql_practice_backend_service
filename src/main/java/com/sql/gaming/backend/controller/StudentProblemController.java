@@ -26,12 +26,7 @@ public class StudentProblemController {
 	// =========================================================
 	// GET ALL ACTIVE PROBLEMS
 	// =========================================================
-
-	/**
-	 * Get all active SQL problems.
-	 *
-	 * Only STUDENT can access this endpoint.
-	 */
+ 
 	@GetMapping("/allactive")
 	public ResponseEntity<ApiResponse<List<ProblemResponse>>> getAllProblems() {
 
@@ -45,11 +40,7 @@ public class StudentProblemController {
 	// GET PROBLEM BY ID
 	// =========================================================
 
-	/**
-	 * Get a single active SQL problem.
-	 *
-	 * expectedQuery is NOT returned.
-	 */
+	 
 	@GetMapping("/{problemId}")
 	public ResponseEntity<ApiResponse<ProblemResponse>> getProblemById(@PathVariable Long problemId,
 			Authentication authentication) {

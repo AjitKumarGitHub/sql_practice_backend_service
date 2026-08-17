@@ -255,42 +255,7 @@ public class SubmissionService {
 			throw new RuntimeException("Unable to fetch submission.");
 		}
 	}
-
-	/**
-	 * Convert Submission entity to response DTO.
-	 *
-	 * Expected query is NEVER returned.
-	 */
-//	private SubmissionResponse convertToResponse(Submission submission) {
-//
-//		return SubmissionResponse.builder()
-//
-//				.submissionId(submission.getId())
-//
-//				.problemId(submission.getProblem().getId())
-//
-//				.problemTitle(submission.getProblem().getTitle())
-//
-//				.submittedQuery(submission.getSubmittedQuery())
-//
-//				.attemptNumber(submission.getAttemptNumber())
-//
-//				.status(submission.getStatus())
-//
-//				.score(submission.getScore())
-//				
-//				.difficulty(submission.getProblem().getDifficulty())
-//
-//				.executionTimeMs(submission.getExecutionTimeMs())
-//
-//				.message(submission.getErrorMessage())
-//
-//				.createdAt(submission.getCreatedAt())
-//
-//				.completedAt(submission.getCompletedAt())
-//
-//				.build();
-//	}
+ 
 
 	private SubmissionResponse convertToResponse(Submission submission) {
 

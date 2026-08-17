@@ -24,21 +24,7 @@ public class LeaderboardController {
 
 	private final LeaderboardService leaderboardService;
 
-	// =========================================================
-	// GLOBAL LEADERBOARD
-	// =========================================================
-
-	/**
-	 * Get paginated global leaderboard.
-	 *
-	 * Example:
-	 *
-	 * GET /api/v1/leaderboard/global?page=0&size=20
-	 *
-	 * page starts from 0.
-	 *
-	 * Default: page = 0 size = 20
-	 */
+ 
 	@GetMapping("/global")
 	public ResponseEntity<ApiResponse<Page<LeaderboardResponse>>> getGlobalLeaderboard(
 
@@ -56,17 +42,7 @@ public class LeaderboardController {
 				.message("Global leaderboard fetched successfully.").data(leaderboard).build());
 	}
 
-	// =========================================================
-	// BATCH LEADERBOARD
-	// =========================================================
-
-	/**
-	 * Get paginated leaderboard for a specific batch.
-	 *
-	 * Example:
-	 *
-	 * GET /api/v1/leaderboard/batch/2025?page=0&size=20
-	 */
+ 
 	@GetMapping("/batch/{batch}")
 	public ResponseEntity<ApiResponse<Page<LeaderboardResponse>>> getBatchLeaderboard(
 

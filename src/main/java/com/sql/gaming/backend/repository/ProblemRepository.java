@@ -13,57 +13,33 @@ import com.sql.gaming.backend.pojo.User;
 @Repository
 public interface ProblemRepository extends JpaRepository<Problem, Long> {
 
-    /**
-     * Find problem using its unique slug.
-     */
+     
     Optional<Problem> findBySlug(String slug);
 
-    /**
-     * Check whether a slug already exists.
-     */
+     
     boolean existsBySlug(String slug);
 
-    /**
-     * Get only active problems.
-     */
+     
     List<Problem> findByActiveTrue();
 
-    /**
-     * Get active problems of a particular difficulty.
-     *
-     * Example:
-     * EASY
-     * MEDIUM
-     * HARD
-     */
+    
     List<Problem> findByDifficultyAndActiveTrue(
             Difficulty difficulty
     );
 
-    /**
-     * Get all problems created by a particular
-     * faculty/admin user.
-     */
+     
     List<Problem> findByCreatedBy(User createdBy);
 
-    /**
-     * Get active problems created by a particular
-     * faculty/admin user.
-     */
+     
     List<Problem> findByCreatedByAndActiveTrue(
             User createdBy
     );
 
-    /**
-     * Get problems by creator username.
-     */
+    
     List<Problem> findByCreatedByUserName(
             String userName
     );
-
-    /**
-     * Get active problems by creator username.
-     */
+ 
     List<Problem> findByCreatedByUserNameAndActiveTrue(
             String userName
     );
